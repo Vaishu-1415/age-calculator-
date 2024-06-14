@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./styles.css">
+    <title>Age Calculator</title>
+</head>
+<body>
+    <div class="container">
+        <div class="calculator">
+            <h1>JavaScript <br> <span>
+                Age Calculator
+                
+            </h1>
+            </span>
+
+            <div class="input-box">
+                <input type="date" id="date">
+                <button onclick="calculateAge()">
+                    Calculate Age
+                </button>
+            </div>
+            <p id="result"></p>
+        </div>
+    </div>
+    <script>
+        let userInput = document.getElementById("date");
+        userInput.max = new Date().toISOString().split("T")[0];
+
+        let result = document.getElementById("result");
+
+        function calculateAge(){
+            const diff = Date.now() - new Date(userInput.value).getTime();
+            const age = new Date(diff).getFullYear() - 1970;
+            result.innerHTML = `You are ${age} years old`;
+        }
+
+    </script>
+</body>
+</html>
